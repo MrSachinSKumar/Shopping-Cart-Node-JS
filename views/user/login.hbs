@@ -1,0 +1,47 @@
+<section>
+    <div class="row">
+        <div class="col-md-6 m-auto"> 
+            <div class="container mt-5">
+                <div class="row d-flex justify-content-center text-center">
+                    <h2 class="mb-5">Login</h2>
+                </div>
+    <form action="/login" method="post">
+
+    {{#if loginErr}}
+    <p>{{loginErr}}</p>
+    {{/if}}
+        <div class="row d-flex justify-content-center mb-4">
+                <div class="form-group mb-3">
+                    <label>Email address</label>
+                </div>
+                <div class="form-group mb-4">
+                    <input type="email" class="form-control" name="email" value="">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Password</label>
+                </div>
+
+                <div class="form-group mb-2">
+                    <input type="password"  class="form-control" name="password" value="">
+                </div>
+        </div>
+
+        <div class="row mb-4 d-flex justify-content-center text-center">
+            <a style="text-decoration: none;" href="#!">Forgot password?</a>
+        </div>
+        <div class="row mb-4 d-flex justify-content-center">
+            <button type="submit" class="text-center btn btn-primary btn-block">Login</button>
+        </div>
+
+        <div class="text-center">
+            <p>Not a member? <a style="text-decoration: none;" href="/signup">Register</a></p>
+        </div>
+        <div class="text-center">
+            <p>Are you Admin? <a style="text-decoration: none;" href="/admin/login">Login</a></p>
+        </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</section>

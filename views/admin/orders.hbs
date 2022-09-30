@@ -1,0 +1,65 @@
+<section>
+    <div class="container">
+        <h2>{{this._id.str}}</h2>
+        <h2>{{this._id._str}}</h2>
+        <table class="table mt-5" id="ordersTable">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">User ID</th>
+                    <th>Address</th>
+                    <th>Pincode</th>
+                    <th>Mobile</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Payment</th>
+                    <th>Payment Status</th>
+                    <th>Dispatch Status</th>
+                    <th>Products</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orderDetails}}
+                    <tr>
+                        <td>{{this.date}}</td>
+                        <td>{{this._id}}</td>
+                        <td>{{this.userId}}</td>
+                        <td>{{this.deliveryDetails.address}}</td>
+                        <td>{{this.deliveryDetails.pincode}}</td>
+                        <td>{{this.deliveryDetails.mobile}}</td>
+                        <td>{{this.total}}</td>
+                        <td>{{this.paymentMethod}}</td>
+                        <td>{{this.status}}</td>
+                        <td>
+                            <button onclick="changeStatus('{{this._id}}')" class="btn btn-success">{{this.dispatch}}</button>
+                        </td>
+                        <td>
+                            <a href="/admin/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+    </div>
+</section>
+<script>
+$(document).ready(function() 
+{
+    $('#ordersTable').DataTable();
+});
+function changeStatus(orderId)
+{
+    $.ajax
+    ({
+        url:'/admin/change-order-status/'+orderId,
+        method:'post',
+        success:((response)=>
+        {
+            if(response.updateStatus)
+            {
+                alert('Shipment status updated')
+                location.reload()
+            }
+        })
+    })
+}
+</script>

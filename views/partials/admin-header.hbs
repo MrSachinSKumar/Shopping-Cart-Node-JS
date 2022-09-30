@@ -1,0 +1,44 @@
+<header>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Admin Panel</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {{#if admin.name}}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/admin">All Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/admin/orders">All Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/users">All Users</a>
+                        </li>
+                       {{/if}}
+                    </ul>
+                    <div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{#if admin.name}}
+                                {{admin.name}}
+                                {{else}}
+                                Account
+                                {{/if}}</a>    
+                                {{#if admin.name}}
+                                <a class="dropdown-menu" style="text-decoration: none;" href="/admin/logout" aria-labelledby="navbarDropdown">Logout</a> 
+                                {{else}}
+                                <a class="dropdown-menu" style="text-decoration: none;" href="/admin/login" aria-labelledby="navbarDropdown">Login</a>  
+                                {{/if}}
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </nav>
+</header>
+
